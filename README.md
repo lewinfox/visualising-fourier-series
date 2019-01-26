@@ -1,3 +1,4 @@
-# Epicycle
+# Visualising adding sine waves together
 
-Learning about Fourier series!
+Inspired by [this](https://thecodingtrain.com/CodingChallenges/125-fourier-series.html)
+and [this](https://youtu.be/ds0cmAV-Yek).
