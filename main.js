@@ -2,31 +2,37 @@ console.log('main.js connected');
 
 let angle = 0;
 let wave_data = [];
-let slider  = 4;
 
 function setup() {
-    let canvas = createCanvas(windowWidth * 0.8, windowHeight * 0.8);
+    let canvas = createCanvas(windowWidth * 0.8, windowHeight * 0.5);
     canvas.parent('canvas-container');
-    // slider = createSlider(1, 10, 1); // Number of circles
     main_x = width / 5;
     main_y = height / 2;
     main_diameter = 200;
 }
 
 function draw() {
+
+    // Capture the number of circles from input
+    n_series = parseInt(document.getElementById('n-series').value);
+    
     background(16);
 
+    // Get us to the centre of the starting circle
     translate(main_x, main_y);
 
     let x = 0;
     let y = 0;
 
-    for (let i = 0; i < slider; i ++) {
+    for (let i = 0; i < n_series; i ++) {
+        // Incrementally jump outwards from the starting point, adjusting the
+        // radius and angle each time and drawing the relevant bits
         let prev_x = x;
         let prev_y = y;
 
         let n = i * 2 + 1;  // Getting the right progression for the fourier series (1, 3, 7...)
-        let radius = 75 * (4 / (n * PI));
+        // let radius = 75 * (4 / (n * PI));
+        let radius = 75 * (3 / (n * PI));
 
         x += radius * cos(n * angle);
         y += radius * sin(n * angle);
@@ -59,5 +65,5 @@ function draw() {
         wave_data.pop();
     }
 
-    angle += 0.03;
+    angle += 0.025;
 }
