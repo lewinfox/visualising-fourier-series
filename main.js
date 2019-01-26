@@ -15,7 +15,7 @@ function draw() {
 
     // Capture the number of circles from input
     n_series = parseInt(document.getElementById('n-series').value);
-    
+
     background(16);
 
     // Get us to the centre of the starting circle
@@ -52,18 +52,28 @@ function draw() {
 
     // Drawing the wave
     translate(200, 0);
+
+    drawWave(wave_data);
+
+    // Draw the line connecting the overall position to the wave
+    stroke(64);
     line(x - 200, y, 0, wave_data[0]);  // Line joining the tip of the circle to the start of the wave
+
+
+
+    angle += 0.025;
+}
+
+function drawWave(wave_data, r=255, g=255, b=255) {
+    stroke(r, g, b);
     beginShape();
     noFill();
     for (let i = 0; i < wave_data.length; i++) {
         vertex(i, wave_data[i]);
     }
     endShape();
-
     // Trim the wave_data array to stop it getting too large
     if (wave_data.length > width) {
         wave_data.pop();
     }
-
-    angle += 0.025;
 }
