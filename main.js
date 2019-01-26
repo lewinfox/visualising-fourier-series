@@ -124,3 +124,8 @@ function waveNumChange() {
         }
     }
 }
+
+function windowResized() {
+    let parent_div_height = document.getElementById('canvas-container').offsetWidth
+    resizeCanvas(parent_div_height, windowHeight * 0.5);
+ }
